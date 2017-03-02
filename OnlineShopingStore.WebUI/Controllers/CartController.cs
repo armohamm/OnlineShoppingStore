@@ -25,7 +25,7 @@ namespace OnlineShopingStore.WebUI.Controllers
         public RedirectToRouteResult AddToCart(int productId,string returnUrl)
         {
             Product product = repository.Products.FirstOrDefault(p => p.ProductId == productId);
-            if(product == null)
+            if(product != null)
             {
                 GetCart().AddItem(product,1);
             }
