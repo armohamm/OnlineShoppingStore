@@ -12,7 +12,7 @@ namespace OnlineShopingStore.Domain.Entities
 
         public void AddItem(Product product, int quantity)
         {
-            CartLine line = lineCollection.Where(p => p.Product == product)
+            CartLine line = lineCollection.Where(p => p.Product.ProductId == product.ProductId)
                 .FirstOrDefault();
             if (line == null)
             {
@@ -26,7 +26,7 @@ namespace OnlineShopingStore.Domain.Entities
         }
         public void RemoveLine(Product product)
         {
-            lineCollection.RemoveAll(p => p.Product == product);
+            lineCollection.RemoveAll(p => p.Product.ProductId == product.ProductId);
         }
 
         public decimal ComputeTotalValue()
