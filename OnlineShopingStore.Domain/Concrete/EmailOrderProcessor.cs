@@ -31,7 +31,7 @@ namespace OnlineShopingStore.Domain.Concrete
                 smtpClient.Credentials
                     = new NetworkCredential(emailSettings.Username,
                     emailSettings.Password);
-
+                //Email Body
                 StringBuilder body = new StringBuilder()
                     .AppendLine("A new Order has been submitted")
                     .AppendLine("---")
@@ -39,7 +39,7 @@ namespace OnlineShopingStore.Domain.Concrete
                 foreach(var line in cart.Lines)
                 {
                     var subtotal = line.Product.Price * line.Quantity; 
-                    body.AppendFormat("{0} x {1} (subtotal: {2:c}",
+                    body.AppendFormat("{0} x {1} (subtotal: {2:c})\n",
                     line.Quantity,
                     line.Product.Name,
                     subtotal);
